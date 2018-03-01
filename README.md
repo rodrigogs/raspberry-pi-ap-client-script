@@ -1,1 +1,1 @@
-# Raspberry-pi 3 AP Client Wifi Script
+# Raspberry-pi 3 AP/Client Wifi Script
