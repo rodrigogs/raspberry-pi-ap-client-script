@@ -69,8 +69,8 @@ ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
 network={
-    ssid=${CLIENT_NETWORK_SSID}
-    psk=${CLIENT_NETWORK_PSWD}
+    ssid="${CLIENT_NETWORK_SSID}"
+    psk="${CLIENT_NETWORK_PSWD}"
 }
 EOL
 
