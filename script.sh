@@ -1,11 +1,17 @@
 #!/bin/bash
 
 ##################################### < DEPENDENCIES   > #####################################
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit 1
+fi
+
 if ! hash hostapd 2>/dev/null; then
     echo -e "hostapd not found. Installing..."
     echo ""
     apt-get install hostapd -y
 fi
+
 if ! hash dnsmasq 2>/dev/null; then
     echo -e "dnsmasq not found. Installing..."
     echo ""
