@@ -147,25 +147,6 @@ fi
 
 echo -e "${Cyan}Creating new ${HOSTAPD_DEFAULT_CONFIG_FILE} file...${transparent}"
 cat > ${HOSTAPD_DEFAULT_CONFIG_FILE} << EOL
-# Defaults for hostapd initscript
-#
-# See /usr/share/doc/hostapd/README.Debian for information about alternative
-# methods of managing hostapd.
-#
-# Uncomment and set DAEMON_CONF to the absolute path of a hostapd configuration
-# file and hostapd will be started during system boot. An example configuration
-# file can be found at /usr/share/doc/hostapd/examples/hostapd.conf.gz
-#
-#DAEMON_CONF=""
-
-# Additional daemon options to be appended to hostapd command:-
-#       -d   show more debug messages (-dd for even more)
-#       -K   include key data in debug messages
-#       -t   include timestamps in some debug messages
-#
-# Note that -B (daemon mode) and -P (pidfile) options are automatically
-# configured by the init.d script and must not be added to DAEMON_OPTS.
-#
 DAEMON_OPTS="${HOSTAPD_CONFIG_FILE}"
 EOL
 
@@ -186,6 +167,7 @@ fi
 echo -e "${Cyan}Creating new ${HOSTAPD_START_SCRIPT_FILE} file...${transparent}"
 cat > ${HOSTAPD_START_SCRIPT_FILE} << EOL
 #!/bin/bash
+
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 iw dev ${NETWORK_INTERFACE} interface add uap0 type __ap
 service dnsmasq restart
@@ -239,19 +221,7 @@ fi
 echo -e "${Cyan}Creating new ${STARTUP_CONFIG_FILE} file...${transparent}"
 cat > ${STARTUP_CONFIG_FILE} << EOL
 #!/bin/sh -e
-#
-# rc.local
-#
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
 
-# Print the IP address
 _IP=\$(hostname -I) || true
 if [ "\$_IP" ]; then
   printf "My IP address is %s\n" "\$_IP"
