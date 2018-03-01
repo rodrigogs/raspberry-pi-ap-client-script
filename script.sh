@@ -210,8 +210,7 @@ bogus-priv
 dhcp-range=192.168.50.50,192.168.50.150,12h
 EOL
 
-echo -e "${green}Starting dnmasq service...${transparent}"
-service dnsmasq start
+echo -e "${blue}Done!${transparent}"
 
 ##################################### <    STARTUP     > #####################################
 echo -e "${yellow}Configuring startup script...${transparent}"
